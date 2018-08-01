@@ -44,5 +44,3 @@ for row in sheet1.rows:
 
 
 
-
-
