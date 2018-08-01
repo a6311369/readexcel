@@ -1,20 +1,21 @@
 #coding=utf-8
 
-import openpyxl
-
+import openpyxl   #讀寫excel套件
 
 # 讀取Excel
-workbook = openpyxl.load_workbook("C:\\Users\\jiunlin\Desktop\\test.xlsx")
+workbook = openpyxl.load_workbook("C:\\Users\\jiunlin\Desktop\\test2.xlsx")
 
 # 取得所有工作表
 worksheets = workbook.sheetnames
 
 # 取得第一個工作表
-sheet = workbook[worksheets[0]]
+sheet1 = workbook[worksheets[0]]
 i = 1
-
+# 取得第二個工作表
+sheet2 = workbook[worksheets[1]]
+i = 1
 # 所有的row loop
-for row in sheet.rows:
+for row in sheet1.rows:
     #標題跳過
     if i == 1:
         i = i + 1
@@ -34,3 +35,9 @@ for row in sheet.rows:
         if row[0].value.find(item) > -1:
             #將值給印出來
             print(row[0].value)
+            workbook.save('C:\\Users\\jiunlin\Desktop\\test3.xlsx')
+
+
+
+
+
