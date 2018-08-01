@@ -3,14 +3,15 @@
 import openpyxl   #讀寫excel套件
 
 # 讀取Excel
-workbook = openpyxl.load_workbook("C:\\Users\\jiunlin\Desktop\\test2.xlsx")
+workbook = openpyxl.load_workbook("C:\\Users\\jiunlin\Desktop\\test.xlsx")
 
 # 取得所有工作表
 worksheets = workbook.sheetnames
 
 # 取得第一個工作表
 sheet1 = workbook[worksheets[0]]
-i = 1
+i = 1  #判斷標題用
+j = 1  #寫入第二個sheet用
 # 取得第二個工作表
 sheet2 = workbook[worksheets[1]]
 i = 1
@@ -34,8 +35,12 @@ for row in sheet1.rows:
         #如果有比對的到會大於-1
         if row[0].value.find(item) > -1:
             #將值給印出來
-            print(row[0].value)
-            workbook.save('C:\\Users\\jiunlin\Desktop\\test3.xlsx')
+            # print(row[0].value)
+
+            #sheet2的A1欄位開始填資料，並用j值去累加往下填入資料
+            sheet2['A' + str(j)].value = row[0].value
+            j = j + 1
+            workbook.save("C:\\Users\\jiunlin\Desktop\\test.xlsx")
 
 
 
